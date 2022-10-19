@@ -1,0 +1,27 @@
+1)
+select last_name,first_name
+from actor 
+order by    last_name desc;
+
+select last_name,first_name
+from actor 
+order by first_name desc;
+
+2)
+select actor_id, first_name,last_name
+from actor 
+where last_name= 'williams'
+or last_name= 'Davis'
+
+3)
+select rental_id
+from rental 
+where date(rental_date)='2005-07-05'; 
+
+4)
+select c.email, r.return_date
+from customer c
+inner join rental r 
+on c.customer_id = r.customer_id
+where date(r.rental_date)='2005-06-14'
+order by return_date desc;

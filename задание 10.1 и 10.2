@@ -1,0 +1,35 @@
+1)
+use sakila;
+select c.customer_id, c.first_name, sum(p.amount)
+from customer c
+left outer join payment p
+on c.customer_id = p.customer_id
+group by c.customer_id;
+2)
+use sakila;
+select c.customer_id, c.first_name, sum(p.amount)
+from payment p
+right outer join customer c 
+on c.customer_id = p.customer_id
+group by c.customer_id;
+
+1)
+use gleb3;
+select profile.fio , post.id , media_id ,profile.city
+from profile
+left outer join post on
+profile.id= post.id 
+left outer join seive on 
+profile.id=media_id
+where media_id >=50
+order by profile.fio;
+2)
+use gleb3;
+select profile.fio , post.id , media_id ,profile.city
+from profile
+right outer join post on
+profile.id= post.id 
+right outer join seive on 
+profile.id=media_id
+where media_id <=50
+order by profile.fio;

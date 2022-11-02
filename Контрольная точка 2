@@ -1,0 +1,73 @@
+1)Простые запросы 
+1) 
+use gleb3;
+select id,fio
+from profile
+order by fio desc;
+2)
+use gleb3;
+select *
+from post
+where id < 20;
+2) Запросы с агрегациями
+use gleb3;
+SELECT count(*) FROM user; //кол во параметров в таблице user 
+3) Сложные запросы с объединением 2-3 таблиц с помощью join
+1)
+use gleb3;
+select profile.fio , post.id , media_id
+from profile
+inner join post on
+profile.id= post.id 
+inner join seive on 
+profile.id=media_id
+order by profile.fio
+2)
+use gleb3;
+select profile.fio , post.id , media_id ,profile.city
+from profile
+inner join post on
+profile.id= post.id 
+inner join seive on 
+profile.id=media_id
+where media_id >=50
+order by profile.fio
+3)
+use gleb3;
+select profile.fio , post.id , media_id ,profile.city
+from profile
+inner join post on
+profile.id= post.id 
+inner join seive on 
+profile.id=media_id
+where profile.city = 'Port Evert' ;
+4) Сложные запросы с объёдинениями 2-3 таблиц и подзапросами
+1)
+use gleb3;
+select profile.fio , post.id , media_id, ststus
+from profile
+inner join post on
+profile.id= post.id
+inner join seive on 
+profile.id=media_id
+where ststus = (select max(ststus)from profile )
+2)
+use gleb3;
+select profile.fio , post.id , media_id, ststus
+from profile
+inner join post on
+profile.id= post.id
+inner join seive on 
+profile.id=media_id
+where ststus = (select min(ststus)from profile )
+3)
+use gleb3;
+select profile.fio , post.id , media_id, ststus
+from profile
+inner join post on
+profile.id= post.id
+inner join seive on 
+profile.id=media_id
+where ststus = (select min(ststus)from profile )
+group by profile.fio
+
